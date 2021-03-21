@@ -1,0 +1,896 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="RegisterUserService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="surname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="security_qestion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="security_answer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterUserServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegisterUserServiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="userLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="userLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userLoginResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertRecipeService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="intgredients" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="method" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ownerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalRatings" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="rating" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="avgRating" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertRecipeServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertRecipeServiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getUserIDResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRecipeName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="recipeId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="RecipeName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRecipeNameResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateRecipeEngredients">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="recipeId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="recipeEngredients" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRecipeEngredientsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateRecipeMethod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="recipeId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="recipeEngredients" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateRecipeMethodResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateUsername">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateUsernameResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updatePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updatePasswordResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateFirstname">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateFirstnameResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateLastname">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateLastnameResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateEmailResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getSecurityQuestuion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSecurityQuestuionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSecurityQuestuionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateSecurityQuestion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="validateSecurityQuestionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="validateSecurityQuestionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="changePasswordByUsername">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="changePasswordByUsernameResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="retrievePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="retrievePasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="retrievePasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="changeSecurityInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="question" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="answer" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="changeSecurityInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="changeSecurityInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_recipe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="recipe_name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_recipeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_recipeResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="get_recipes">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_recipesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_recipesResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rate_recipe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="recipe_name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="rating" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rate_recipeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="rate_recipeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEmailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RegisterUserServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterUserService" />
+  </wsdl:message>
+  <wsdl:message name="RegisterUserServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterUserServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="userLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:userLogin" />
+  </wsdl:message>
+  <wsdl:message name="userLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:userLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertRecipeServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertRecipeService" />
+  </wsdl:message>
+  <wsdl:message name="InsertRecipeServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertRecipeServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserID" />
+  </wsdl:message>
+  <wsdl:message name="getUserIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRecipeNameSoapIn">
+    <wsdl:part name="parameters" element="tns:updateRecipeName" />
+  </wsdl:message>
+  <wsdl:message name="updateRecipeNameSoapOut">
+    <wsdl:part name="parameters" element="tns:updateRecipeNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRecipeEngredientsSoapIn">
+    <wsdl:part name="parameters" element="tns:updateRecipeEngredients" />
+  </wsdl:message>
+  <wsdl:message name="updateRecipeEngredientsSoapOut">
+    <wsdl:part name="parameters" element="tns:updateRecipeEngredientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRecipeMethodSoapIn">
+    <wsdl:part name="parameters" element="tns:updateRecipeMethod" />
+  </wsdl:message>
+  <wsdl:message name="updateRecipeMethodSoapOut">
+    <wsdl:part name="parameters" element="tns:updateRecipeMethodResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateUsernameSoapIn">
+    <wsdl:part name="parameters" element="tns:updateUsername" />
+  </wsdl:message>
+  <wsdl:message name="updateUsernameSoapOut">
+    <wsdl:part name="parameters" element="tns:updateUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="updatePasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:updatePassword" />
+  </wsdl:message>
+  <wsdl:message name="updatePasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:updatePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateFirstnameSoapIn">
+    <wsdl:part name="parameters" element="tns:updateFirstname" />
+  </wsdl:message>
+  <wsdl:message name="updateFirstnameSoapOut">
+    <wsdl:part name="parameters" element="tns:updateFirstnameResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateLastnameSoapIn">
+    <wsdl:part name="parameters" element="tns:updateLastname" />
+  </wsdl:message>
+  <wsdl:message name="updateLastnameSoapOut">
+    <wsdl:part name="parameters" element="tns:updateLastnameResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:updateEmail" />
+  </wsdl:message>
+  <wsdl:message name="updateEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:updateEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSecurityQuestuionSoapIn">
+    <wsdl:part name="parameters" element="tns:getSecurityQuestuion" />
+  </wsdl:message>
+  <wsdl:message name="getSecurityQuestuionSoapOut">
+    <wsdl:part name="parameters" element="tns:getSecurityQuestuionResponse" />
+  </wsdl:message>
+  <wsdl:message name="validateSecurityQuestionSoapIn">
+    <wsdl:part name="parameters" element="tns:validateSecurityQuestion" />
+  </wsdl:message>
+  <wsdl:message name="validateSecurityQuestionSoapOut">
+    <wsdl:part name="parameters" element="tns:validateSecurityQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="changePasswordByUsernameSoapIn">
+    <wsdl:part name="parameters" element="tns:changePasswordByUsername" />
+  </wsdl:message>
+  <wsdl:message name="changePasswordByUsernameSoapOut">
+    <wsdl:part name="parameters" element="tns:changePasswordByUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="retrievePasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:retrievePassword" />
+  </wsdl:message>
+  <wsdl:message name="retrievePasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:retrievePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="changeSecurityInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:changeSecurityInfo" />
+  </wsdl:message>
+  <wsdl:message name="changeSecurityInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:changeSecurityInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_recipeSoapIn">
+    <wsdl:part name="parameters" element="tns:get_recipe" />
+  </wsdl:message>
+  <wsdl:message name="get_recipeSoapOut">
+    <wsdl:part name="parameters" element="tns:get_recipeResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_recipesSoapIn">
+    <wsdl:part name="parameters" element="tns:get_recipes" />
+  </wsdl:message>
+  <wsdl:message name="get_recipesSoapOut">
+    <wsdl:part name="parameters" element="tns:get_recipesResponse" />
+  </wsdl:message>
+  <wsdl:message name="rate_recipeSoapIn">
+    <wsdl:part name="parameters" element="tns:rate_recipe" />
+  </wsdl:message>
+  <wsdl:message name="rate_recipeSoapOut">
+    <wsdl:part name="parameters" element="tns:rate_recipeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:getEmail" />
+  </wsdl:message>
+  <wsdl:message name="getEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:getEmailResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UserServicesSoap">
+    <wsdl:operation name="RegisterUserService">
+      <wsdl:input message="tns:RegisterUserServiceSoapIn" />
+      <wsdl:output message="tns:RegisterUserServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="userLogin">
+      <wsdl:input message="tns:userLoginSoapIn" />
+      <wsdl:output message="tns:userLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertRecipeService">
+      <wsdl:input message="tns:InsertRecipeServiceSoapIn" />
+      <wsdl:output message="tns:InsertRecipeServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserID">
+      <wsdl:input message="tns:getUserIDSoapIn" />
+      <wsdl:output message="tns:getUserIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRecipeName">
+      <wsdl:input message="tns:updateRecipeNameSoapIn" />
+      <wsdl:output message="tns:updateRecipeNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRecipeEngredients">
+      <wsdl:input message="tns:updateRecipeEngredientsSoapIn" />
+      <wsdl:output message="tns:updateRecipeEngredientsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRecipeMethod">
+      <wsdl:input message="tns:updateRecipeMethodSoapIn" />
+      <wsdl:output message="tns:updateRecipeMethodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateUsername">
+      <wsdl:input message="tns:updateUsernameSoapIn" />
+      <wsdl:output message="tns:updateUsernameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updatePassword">
+      <wsdl:input message="tns:updatePasswordSoapIn" />
+      <wsdl:output message="tns:updatePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateFirstname">
+      <wsdl:input message="tns:updateFirstnameSoapIn" />
+      <wsdl:output message="tns:updateFirstnameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateLastname">
+      <wsdl:input message="tns:updateLastnameSoapIn" />
+      <wsdl:output message="tns:updateLastnameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateEmail">
+      <wsdl:input message="tns:updateEmailSoapIn" />
+      <wsdl:output message="tns:updateEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSecurityQuestuion">
+      <wsdl:input message="tns:getSecurityQuestuionSoapIn" />
+      <wsdl:output message="tns:getSecurityQuestuionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="validateSecurityQuestion">
+      <wsdl:input message="tns:validateSecurityQuestionSoapIn" />
+      <wsdl:output message="tns:validateSecurityQuestionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="changePasswordByUsername">
+      <wsdl:input message="tns:changePasswordByUsernameSoapIn" />
+      <wsdl:output message="tns:changePasswordByUsernameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="retrievePassword">
+      <wsdl:input message="tns:retrievePasswordSoapIn" />
+      <wsdl:output message="tns:retrievePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="changeSecurityInfo">
+      <wsdl:input message="tns:changeSecurityInfoSoapIn" />
+      <wsdl:output message="tns:changeSecurityInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_recipe">
+      <wsdl:input message="tns:get_recipeSoapIn" />
+      <wsdl:output message="tns:get_recipeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_recipes">
+      <wsdl:input message="tns:get_recipesSoapIn" />
+      <wsdl:output message="tns:get_recipesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="rate_recipe">
+      <wsdl:input message="tns:rate_recipeSoapIn" />
+      <wsdl:output message="tns:rate_recipeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmail">
+      <wsdl:input message="tns:getEmailSoapIn" />
+      <wsdl:output message="tns:getEmailSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserServicesSoap" type="tns:UserServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegisterUserService">
+      <soap:operation soapAction="http://tempuri.org/RegisterUserService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userLogin">
+      <soap:operation soapAction="http://tempuri.org/userLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRecipeService">
+      <soap:operation soapAction="http://tempuri.org/InsertRecipeService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserID">
+      <soap:operation soapAction="http://tempuri.org/getUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRecipeName">
+      <soap:operation soapAction="http://tempuri.org/updateRecipeName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRecipeEngredients">
+      <soap:operation soapAction="http://tempuri.org/updateRecipeEngredients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRecipeMethod">
+      <soap:operation soapAction="http://tempuri.org/updateRecipeMethod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUsername">
+      <soap:operation soapAction="http://tempuri.org/updateUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePassword">
+      <soap:operation soapAction="http://tempuri.org/updatePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateFirstname">
+      <soap:operation soapAction="http://tempuri.org/updateFirstname" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateLastname">
+      <soap:operation soapAction="http://tempuri.org/updateLastname" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEmail">
+      <soap:operation soapAction="http://tempuri.org/updateEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSecurityQuestuion">
+      <soap:operation soapAction="http://tempuri.org/getSecurityQuestuion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateSecurityQuestion">
+      <soap:operation soapAction="http://tempuri.org/validateSecurityQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changePasswordByUsername">
+      <soap:operation soapAction="http://tempuri.org/changePasswordByUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrievePassword">
+      <soap:operation soapAction="http://tempuri.org/retrievePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeSecurityInfo">
+      <soap:operation soapAction="http://tempuri.org/changeSecurityInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_recipe">
+      <soap:operation soapAction="http://tempuri.org/get_recipe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_recipes">
+      <soap:operation soapAction="http://tempuri.org/get_recipes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rate_recipe">
+      <soap:operation soapAction="http://tempuri.org/rate_recipe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmail">
+      <soap:operation soapAction="http://tempuri.org/getEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserServicesSoap12" type="tns:UserServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegisterUserService">
+      <soap12:operation soapAction="http://tempuri.org/RegisterUserService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="userLogin">
+      <soap12:operation soapAction="http://tempuri.org/userLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRecipeService">
+      <soap12:operation soapAction="http://tempuri.org/InsertRecipeService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserID">
+      <soap12:operation soapAction="http://tempuri.org/getUserID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRecipeName">
+      <soap12:operation soapAction="http://tempuri.org/updateRecipeName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRecipeEngredients">
+      <soap12:operation soapAction="http://tempuri.org/updateRecipeEngredients" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRecipeMethod">
+      <soap12:operation soapAction="http://tempuri.org/updateRecipeMethod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUsername">
+      <soap12:operation soapAction="http://tempuri.org/updateUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePassword">
+      <soap12:operation soapAction="http://tempuri.org/updatePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateFirstname">
+      <soap12:operation soapAction="http://tempuri.org/updateFirstname" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateLastname">
+      <soap12:operation soapAction="http://tempuri.org/updateLastname" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateEmail">
+      <soap12:operation soapAction="http://tempuri.org/updateEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSecurityQuestuion">
+      <soap12:operation soapAction="http://tempuri.org/getSecurityQuestuion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateSecurityQuestion">
+      <soap12:operation soapAction="http://tempuri.org/validateSecurityQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changePasswordByUsername">
+      <soap12:operation soapAction="http://tempuri.org/changePasswordByUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrievePassword">
+      <soap12:operation soapAction="http://tempuri.org/retrievePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeSecurityInfo">
+      <soap12:operation soapAction="http://tempuri.org/changeSecurityInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_recipe">
+      <soap12:operation soapAction="http://tempuri.org/get_recipe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_recipes">
+      <soap12:operation soapAction="http://tempuri.org/get_recipes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rate_recipe">
+      <soap12:operation soapAction="http://tempuri.org/rate_recipe" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmail">
+      <soap12:operation soapAction="http://tempuri.org/getEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserServices">
+    <wsdl:port name="UserServicesSoap" binding="tns:UserServicesSoap">
+      <soap:address location="http://localhost:49269/UserServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserServicesSoap12" binding="tns:UserServicesSoap12">
+      <soap12:address location="http://localhost:49269/UserServices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
